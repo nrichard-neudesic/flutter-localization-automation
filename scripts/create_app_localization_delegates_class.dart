@@ -10,7 +10,7 @@ void main() {
 
 createAppLocalizationDelegates(String filePath) async {
   print('creating app localization delegates class');
-  String fileName = "app_localization_delegates";
+  String fileName = 'app_localization_delegates';
   String path = '$filePath/$fileName.dart';
 
   var file = new File(path);
@@ -35,7 +35,7 @@ class AppLocalizationDelegates {
 
 String _getDelegateNames() {
   Directory arbDirectory = Directory('lib/localization/l10n/generated');
-  String jsonFileName = "appLocalizationDelegates.json";
+  String jsonFileName = 'appLocalizationDelegates.json';
   String jsonFilePath = '${arbDirectory.path}/$jsonFileName';
 
   String originalString = File(jsonFilePath)?.readAsStringSync();
@@ -44,12 +44,12 @@ String _getDelegateNames() {
       ? Map<String, dynamic>()
       : jsonDecode(originalString);
 
-  String listString = "";
+  String listString = '';
 
   delegateJson.forEach((key, value) {
     print(key);
     String delegateName = key.contains('.delegate') ? key : '$key()';
-    listString += "\n\t\t$delegateName,";
+    listString += '\n\t\t$delegateName,';
   });
 
   return listString;
@@ -57,7 +57,7 @@ String _getDelegateNames() {
 
 String _getImportFilePaths() {
   Directory arbDirectory = Directory('lib/localization/l10n/generated');
-  String jsonFileName = "appLocalizationDelegates.json";
+  String jsonFileName = 'appLocalizationDelegates.json';
   String jsonFilePath = '${arbDirectory.path}/$jsonFileName';
 
   String originalString = File(jsonFilePath)?.readAsStringSync();
@@ -66,7 +66,7 @@ String _getImportFilePaths() {
       ? Map<String, dynamic>()
       : jsonDecode(originalString);
 
-  String listString = "";
+  String listString = '';
 
   delegateJson.forEach((key, value) {
     if (!key.contains('.delegate')) {

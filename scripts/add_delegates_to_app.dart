@@ -7,7 +7,7 @@ addDelegatesToApp() {
 
     var contents = theFile.readAsStringSync();
     // find last index of MaterialApp( or CupertinoApp(
-    stdout.writeln("Searching for Material or CupertinoApp");
+    stdout.writeln('Searching for Material or CupertinoApp');
     var appRegex = new RegExp(r"MaterialApp\(|CupertinoApp\(");
     RegExpMatch appWidgetDeclaration = appRegex.firstMatch(contents);
 
@@ -32,21 +32,21 @@ addDelegatesToApp() {
     print('content length!!!!!!! ${contents.length}');
     RegExpMatch winningMatch;
     allPossibleEnds.forEach((possibleEnding) {
-      print("possible ending start:   ${possibleEnding.start}");
-      print("possible ending end:   ${possibleEnding.end}");
+      print('possible ending start:   ${possibleEnding.start}');
+      print('possible ending end:   ${possibleEnding.end}');
 
       String range = contents.substring(
           appWidgetDeclaration.end,
           (possibleEnding.start + appWidgetDeclaration.end) >= contents.length
               ? contents.length
               : possibleEnding.start + appWidgetDeclaration.end);
-      print("RANGE!!!!   $range");
+      print('RANGE!!!!   $range');
 
       var allStart = RegExp(r"{").allMatches(range);
       var allEnd = RegExp(r"}").allMatches(range);
 
-      print("all start length ${allStart.length}");
-      print("all end length ${allEnd.length}");
+      print('all start length ${allStart.length}');
+      print('all end length ${allEnd.length}');
 
       // if (allStart.length == allEnd.length) {
       //   winningMatch = possibleEnding;

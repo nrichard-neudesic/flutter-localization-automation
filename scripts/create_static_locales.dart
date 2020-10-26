@@ -2,7 +2,7 @@ import 'dart:io';
 
 createStaticLocales(String filePath) async {
   print(filePath);
-  String fileName = "static_locales";
+  String fileName = 'static_locales';
   String path = '$filePath/$fileName.dart';
 
   var file = new File(path);

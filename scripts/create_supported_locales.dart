@@ -1,7 +1,7 @@
 import 'dart:io';
 
 createSupportedLocales(String filePath) async {
-  String fileName = "supported_locales";
+  String fileName = 'supported_locales';
   String path = '$filePath/$fileName.dart';
 
   var file = new File(path);

@@ -7,7 +7,7 @@ void main() {
 }
 
 createLocalizationFile(String filePath) {
-  stdout.writeln("Creating Localization File");
+  stdout.writeln('Creating Localization File');
   stdout.writeln("""Class Name?
 (example: SignInPage) The script will auto append Localization""");
   String classNamePrefix = stdin.readLineSync();
@@ -129,7 +129,7 @@ class ${className}Delegate
 
 _addToJsonFile(String delegateName, String fileName) {
   Directory arbDirectory = Directory('lib/localization/l10n/generated');
-  String jsonFileName = "appLocalizationDelegates.json";
+  String jsonFileName = 'appLocalizationDelegates.json';
   String jsonFilePath = '${arbDirectory.path}/$jsonFileName';
 
   print('checking to see if appLocalizationDelegates.json exists');
