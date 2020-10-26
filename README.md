@@ -1,4 +1,4 @@
-# Localization in the Project
+# Localization Automation Scripts
 
 ## How do I start?
 
@@ -12,10 +12,10 @@ All automation scripts are in the localizationAutomation folder. the scripts sho
 
 Find your MaterialApp or CupertinoApp widget in your widget tree, add these as arguments
 
-<code>
+```dart
       localizationsDelegates: AppLocalizationDelegates.delegates,
       supportedLocales: SupportedLocales.locales,
-</code>
+```
 
 ## Neecessary step! - Adding supported languages
 
@@ -32,7 +32,10 @@ Add them to the \${FILE_NAME}Localization file that was generated from initial s
 ### Necessary Step - import messages_all.dart to all localization classes
 
 You will need to import messages_all.dart to your localization class.
+
+```dart
 import 'package:PACKAGE_NAME/localization/l10n/generated/messages_all.dart';
+```
 
 ## I added my string resources, now what?
 
@@ -50,14 +53,14 @@ There is a main .arb file: "intl_messages.arb", and an .arb file for each langua
 
 To add a translation, each of the language specific .arb files needs to be updated (e.g: 'intl_en.arb', 'intl_es.arb' etc.). Example .arb string resource:
 
-<code>
+```json
   "homePageTitleExample": "Hello World!",
   "@homePageTitleExample": {
     "description": "Basic Example Description",
     "type": "text",
     "placeholders": {}
   },
-</code>
+```
 
 In the example above, the text for the string resource is "Hello World!"
 
@@ -69,7 +72,7 @@ This software gives you a clear UI of all the string resources and the ability t
 ### Necessary Step! After you add translations:
 
 If you change an .arb file, the changed text will not appear in the app until you run
-`sh localizationAutomation/update_localization_files.sh`.
+`sh localizationAutomation/update_localization_files.sh`
 
 ### Note:
 
@@ -78,7 +81,10 @@ There is a bool in the steps_for_diff that allows the script to remove unused st
 ## How do I use the string resources in my project?
 
 String resources live in the Localization files created from 'create_localization_file.sh'. To use:
+
+```dart
 NAME_OF_FILE.of(context).NAME_OF_RESOURCE;
+```
 
 Example:
 HomePageLocalization.of(context).homePageTitleExample;
