@@ -69,12 +69,12 @@ https://www.codeandweb.com/babeledit
 
 This software gives you a clear UI of all the string resources and the ability to import/export excel documents to give to translators.
 
-### Necessary Step! After you add translations:
+### Necessary Step! After you add translations
 
 If you change an .arb file, the changed text will not appear in the app until you run
 `sh localizationAutomation/update_localization_files.sh`
 
-### Note:
+### Note
 
 There is a bool in the steps_for_diff that allows the script to remove unused strings from the arb files. Change that to false if you want the script to go through all the strings individually
 
