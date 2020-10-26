@@ -54,10 +54,10 @@ void main() {
 
 void _createARBFiles(Directory arbDirectory) {
   for (var locale in StaticLocales.localeList) {
-    final fileName = "intl_${locale.elementAt(0)}.arb";
+    final fileName = 'intl_${locale.elementAt(0)}.arb';
 
-    if (!File("${arbDirectory.path}/$fileName").existsSync()) {
-      File("${arbDirectory.path}/$fileName").createSync();
+    if (!File('${arbDirectory.path}/$fileName').existsSync()) {
+      File('${arbDirectory.path}/$fileName').createSync();
     }
   }
   ;
@@ -102,10 +102,8 @@ Map<String, dynamic> _askToRemoveIndividualKey(
     if (!baseInternationalMessages.containsKey(key) &&
         !keysToRemove.contains(key) &&
         !keysToKeep.contains(key)) {
-      print("""The key '$key' exists in ${entity.path}, 
-but doesn't exist in ${arbDirectory.path}/intl_messages.arb. 
-Should we remove '$key'?. 
-Y or N:""");
+      print(
+          "The key '$key' exists in ${entity.path},\nbut doesn't exist in ${arbDirectory.path}/intl_messages.arb.\nShould we remove '$key'?.\nY or N:");
 
       if (userConfirmed()) {
         keysToRemove.add(key);
@@ -127,7 +125,7 @@ Map<String, dynamic> _removeAllUnusedKeys(
   Map<String, dynamic> entityJson,
   Map<String, dynamic> baseInternationalMessages,
 ) {
-  Map<String, dynamic> filteredMap = entityJson;
+  var filteredMap = entityJson;
 
   filteredMap
       .removeWhere((key, value) => !baseInternationalMessages.containsKey(key));

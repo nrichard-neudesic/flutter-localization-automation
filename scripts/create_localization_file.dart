@@ -8,25 +8,25 @@ void main() {
 
 void createLocalizationFile(String filePath) {
   stdout.writeln('Creating Localization File');
-  stdout.writeln("""Class Name?
-(example: SignInPage) The script will auto append Localization""");
+  stdout.writeln(
+      'Class Name?\n(example: SignInPage) The script will auto append Localization');
   var classNamePrefix = stdin.readLineSync();
   var className = '${classNamePrefix}Localization';
 
   var exampleMessageName =
       '${classNamePrefix[0].toLowerCase()}${classNamePrefix.substring(1)}';
 
-  stdout.writeln("""File Name?
-(example: sign_in_page) The script will auto append _localization""");
+  stdout.writeln(
+      'File Name?\n(example: sign_in_page) The script will auto append _localization');
   String fileName = stdin.readLineSync();
-  RegExp justNumbers = new RegExp('[0-9]');
+  RegExp justNumbers = RegExp('[0-9]');
   while (justNumbers.hasMatch(fileName[0])) {
     print('cannot start with a number');
     fileName = stdin.readLineSync();
     break;
   }
 
-  var file = new File('$filePath/${fileName}_localization.dart');
+  var file = File('$filePath/${fileName}_localization.dart');
   var sink = file.openWrite();
 
   sink.write("""

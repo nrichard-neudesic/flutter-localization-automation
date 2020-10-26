@@ -5,7 +5,7 @@ void createStaticLocales(String filePath) async {
   const fileName = 'static_locales';
   final path = '$filePath/$fileName.dart';
 
-  var file = new File(path);
+  var file = File(path);
 
   print('Creating Static Locales.');
   file.writeAsStringSync("""class StaticLocales {

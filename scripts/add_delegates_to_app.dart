@@ -3,15 +3,15 @@ import 'dart:io';
 addDelegatesToApp() {
   //TODO finish
   try {
-    var theFile = new File('./lib/main.dart');
+    var theFile = File('./lib/main.dart');
 
     var contents = theFile.readAsStringSync();
     // find last index of MaterialApp( or CupertinoApp(
     stdout.writeln('Searching for Material or CupertinoApp');
-    var appRegex = new RegExp(r"MaterialApp\(|CupertinoApp\(");
+    var appRegex = RegExp(r"MaterialApp\(|CupertinoApp\(");
     RegExpMatch appWidgetDeclaration = appRegex.firstMatch(contents);
 
-    var endOfAppWidget = new RegExp(r"\);");
+    var endOfAppWidget = RegExp(r"\);");
 
     Iterable<RegExpMatch> allPossibleEnds =
         endOfAppWidget.allMatches(contents.substring(appWidgetDeclaration.end));
@@ -61,7 +61,7 @@ addDelegatesToApp() {
     // }
 
     // check if localizationDelegates is in app build function
-    var localizationDelegatesRegex = new RegExp(r"localizationDelegates:");
+    var localizationDelegatesRegex = RegExp(r"localizationDelegates:");
 
     // find end of Material/Cupertino App Widget
 // the end is where it finds );

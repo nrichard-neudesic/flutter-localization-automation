@@ -2,7 +2,7 @@ import 'dart:io';
 
 void addIntlTranslationToPackages() async {
   try {
-    var theFile = new File('pubspec.yaml');
+    var theFile = File('pubspec.yaml');
 
     var contents = theFile.readAsStringSync();
     stdout.writeln('Checking to see if intl package is in pubspec.yaml...');
@@ -10,7 +10,7 @@ void addIntlTranslationToPackages() async {
       stdout.writeln(
           'No intl_translation package found, adding as a dependency.');
 
-      var dependenciesRegex = new RegExp('dependencies:');
+      var dependenciesRegex = RegExp('dependencies:');
       var dependenciesIndices = dependenciesRegex.firstMatch(contents);
 
       if (dependenciesIndices != null) {

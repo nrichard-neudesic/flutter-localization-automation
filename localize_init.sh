@@ -15,7 +15,7 @@ flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/localiza
     --no-use-deferred-loading lib/localization/classes/* lib/localization/l10n/arb/intl_*.arb
 
 # Add new string resources
-dart $BASEDIR/scripts/steps_for_diff.dart
+dart "$BASEDIR"/scripts/steps_for_diff.dart
 
 #  Generate flutter files from arb files.
 flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/localization/l10n/generated \
