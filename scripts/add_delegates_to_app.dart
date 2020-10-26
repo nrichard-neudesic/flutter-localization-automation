@@ -1,6 +1,6 @@
 import 'dart:io';
 
-addDelegatesToApp() {
+void addDelegatesToApp() {
   //TODO finish
   try {
     var theFile = File('./lib/main.dart');
@@ -9,11 +9,11 @@ addDelegatesToApp() {
     // find last index of MaterialApp( or CupertinoApp(
     stdout.writeln('Searching for Material or CupertinoApp');
     var appRegex = RegExp(r"MaterialApp\(|CupertinoApp\(");
-    RegExpMatch appWidgetDeclaration = appRegex.firstMatch(contents);
+    var appWidgetDeclaration = appRegex.firstMatch(contents);
 
     var endOfAppWidget = RegExp(r"\);");
 
-    Iterable<RegExpMatch> allPossibleEnds =
+    var allPossibleEnds =
         endOfAppWidget.allMatches(contents.substring(appWidgetDeclaration.end));
 
     print(allPossibleEnds);
@@ -30,12 +30,12 @@ addDelegatesToApp() {
     // print(contents.substring(noodle.start, noodle.end));
 
     print('content length!!!!!!! ${contents.length}');
-    RegExpMatch winningMatch;
+
     allPossibleEnds.forEach((possibleEnding) {
       print('possible ending start:   ${possibleEnding.start}');
       print('possible ending end:   ${possibleEnding.end}');
 
-      String range = contents.substring(
+      var range = contents.substring(
           appWidgetDeclaration.end,
           (possibleEnding.start + appWidgetDeclaration.end) >= contents.length
               ? contents.length
@@ -61,7 +61,6 @@ addDelegatesToApp() {
     // }
 
     // check if localizationDelegates is in app build function
-    var localizationDelegatesRegex = RegExp(r"localizationDelegates:");
 
     // find end of Material/Cupertino App Widget
 // the end is where it finds );

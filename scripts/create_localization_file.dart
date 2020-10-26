@@ -18,8 +18,8 @@ void createLocalizationFile(String filePath) {
 
   stdout.writeln(
       'File Name?\n(example: sign_in_page) The script will auto append _localization');
-  String fileName = stdin.readLineSync();
-  RegExp justNumbers = RegExp('[0-9]');
+  var fileName = stdin.readLineSync();
+  var justNumbers = RegExp('[0-9]');
   while (justNumbers.hasMatch(fileName[0])) {
     print('cannot start with a number');
     fileName = stdin.readLineSync();
