@@ -1,10 +1,10 @@
 import 'dart:io';
 
-createSupportedLocales(String filePath) async {
-  String fileName = 'supported_locales';
-  String path = '$filePath/$fileName.dart';
+void createSupportedLocales(String filePath) async {
+  var fileName = 'supported_locales';
+  var path = '$filePath/$fileName.dart';
 
-  var file = new File(path);
+  var file = File(path);
 
   print('creating supported locales file.');
   file.writeAsStringSync("""import 'dart:ui';

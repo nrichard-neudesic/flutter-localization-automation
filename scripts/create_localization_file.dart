@@ -6,14 +6,14 @@ void main() {
   createLocalizationFile('$mainLocalizationFilePath/classes');
 }
 
-createLocalizationFile(String filePath) {
+void createLocalizationFile(String filePath) {
   stdout.writeln('Creating Localization File');
   stdout.writeln("""Class Name?
 (example: SignInPage) The script will auto append Localization""");
-  String classNamePrefix = stdin.readLineSync();
-  String className = '${classNamePrefix}Localization';
+  var classNamePrefix = stdin.readLineSync();
+  var className = '${classNamePrefix}Localization';
 
-  String exampleMessageName =
+  var exampleMessageName =
       '${classNamePrefix[0].toLowerCase()}${classNamePrefix.substring(1)}';
 
   stdout.writeln("""File Name?
@@ -127,24 +127,24 @@ class ${className}Delegate
   _addToJsonFile('${className}Delegate', '${fileName}_localization');
 }
 
-_addToJsonFile(String delegateName, String fileName) {
-  Directory arbDirectory = Directory('lib/localization/l10n/generated');
-  String jsonFileName = 'appLocalizationDelegates.json';
-  String jsonFilePath = '${arbDirectory.path}/$jsonFileName';
+void _addToJsonFile(String delegateName, String fileName) {
+  var arbDirectory = Directory('lib/localization/l10n/generated');
+  var jsonFileName = 'appLocalizationDelegates.json';
+  var jsonFilePath = '${arbDirectory.path}/$jsonFileName';
 
   print('checking to see if appLocalizationDelegates.json exists');
-  if (!File("$jsonFilePath").existsSync()) {
+  if (!File('$jsonFilePath').existsSync()) {
     print('appLocalizationDelegates.json does not exist. Creating file.');
-    File("$jsonFilePath").createSync();
+    File('$jsonFilePath').createSync();
     print('created appLocalizationDelegates.json');
   }
 
   try {
     print('getting original string at $jsonFilePath');
-    String originalString = File(jsonFilePath)?.readAsStringSync();
+    var originalString = File(jsonFilePath)?.readAsStringSync();
 
-    Map<String, dynamic> delegateJson = originalString.isEmpty
-        ? Map<String, dynamic>()
+    var delegateJson = originalString.isEmpty
+        ? <String, dynamic>{}
         : jsonDecode(originalString);
 
     delegateJson['GlobalMaterialLocalizations.delegate'] =
@@ -155,7 +155,7 @@ _addToJsonFile(String delegateName, String fileName) {
 
     print('added GlobalMaterialLocalizations and GlobalWidgetsLocalizations');
     delegateJson[delegateName] = fileName;
-    String jsonString = JsonEncoder.withIndent('  ').convert(delegateJson);
+    var jsonString = JsonEncoder.withIndent('  ').convert(delegateJson);
     print('converting delegate to json.');
     File jsonFile = arbDirectory.listSync(recursive: true).firstWhere((file) =>
         file is File && file.path.contains('appLocalizationDelegates'));

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-addIntlTranslationToPackages() async {
+void addIntlTranslationToPackages() async {
   try {
     var theFile = new File('pubspec.yaml');
 
@@ -14,7 +14,7 @@ addIntlTranslationToPackages() async {
       var dependenciesIndices = dependenciesRegex.firstMatch(contents);
 
       if (dependenciesIndices != null) {
-        bool hasWhiteSpaceAfter = contents
+        var hasWhiteSpaceAfter = contents
                 .substring(
                     dependenciesIndices.end + 1, dependenciesIndices.end + 2)
                 .contains('\n') ||
@@ -23,8 +23,8 @@ addIntlTranslationToPackages() async {
                     dependenciesIndices.end + 1, dependenciesIndices.end + 2)
                 .contains('\s');
 
-        String packageName = 'intl_translation: ^0.17.10+1';
-        String intlInsert =
+        var packageName = 'intl_translation: ^0.17.10+1';
+        var intlInsert =
             hasWhiteSpaceAfter ? '\n  $packageName\n' : '  $packageName\n';
 
         contents = contents.substring(0, dependenciesIndices.end + 1) +

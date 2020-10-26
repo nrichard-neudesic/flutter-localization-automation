@@ -1,9 +1,9 @@
 import 'dart:io';
 
-createStaticLocales(String filePath) async {
+void createStaticLocales(String filePath) async {
   print(filePath);
-  String fileName = 'static_locales';
-  String path = '$filePath/$fileName.dart';
+  const fileName = 'static_locales';
+  final path = '$filePath/$fileName.dart';
 
   var file = new File(path);
 

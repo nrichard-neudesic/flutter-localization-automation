@@ -1,8 +1,8 @@
 import 'dart:io';
 
-addFlutterLocalizationPackages() async {
+void addFlutterLocalizationPackages() async {
   try {
-    var theFile = new File('pubspec.yaml');
+    var theFile = File('pubspec.yaml');
 
     var contents = theFile.readAsStringSync();
     stdout.writeln('Checking to see if intl package is in pubspec.yaml...');
@@ -10,11 +10,11 @@ addFlutterLocalizationPackages() async {
       stdout.writeln(
           'No flutter_localizations package found, adding as a dependency.');
 
-      var dependenciesRegex = new RegExp('dependencies:');
+      var dependenciesRegex = RegExp('dependencies:');
       var dependenciesIndices = dependenciesRegex.firstMatch(contents);
 
       if (dependenciesIndices != null) {
-        bool hasWhiteSpaceAfter = contents
+        var hasWhiteSpaceAfter = contents
                 .substring(
                     dependenciesIndices.end + 1, dependenciesIndices.end + 2)
                 .contains('\n') ||
@@ -23,8 +23,8 @@ addFlutterLocalizationPackages() async {
                     dependenciesIndices.end + 1, dependenciesIndices.end + 2)
                 .contains('\s');
 
-        String textToInsert = 'flutter_localizations:\n    sdk: flutter';
-        String intlInsert =
+        var textToInsert = 'flutter_localizations:\n    sdk: flutter';
+        var intlInsert =
             hasWhiteSpaceAfter ? '\n  $textToInsert\n' : '  $textToInsert\n';
 
         contents = contents.substring(0, dependenciesIndices.end + 1) +

@@ -8,12 +8,12 @@ void main() {
   createAppLocalizationDelegates(mainLocalizationFilePath);
 }
 
-createAppLocalizationDelegates(String filePath) async {
+void createAppLocalizationDelegates(String filePath) async {
   print('creating app localization delegates class');
-  String fileName = 'app_localization_delegates';
-  String path = '$filePath/$fileName.dart';
+  const fileName = 'app_localization_delegates';
+  var path = '$filePath/$fileName.dart';
 
-  var file = new File(path);
+  var file = File(path);
 
   var listString = _getDelegateNames();
   var importsString = _getImportFilePaths();
@@ -34,21 +34,20 @@ class AppLocalizationDelegates {
 }
 
 String _getDelegateNames() {
-  Directory arbDirectory = Directory('lib/localization/l10n/generated');
-  String jsonFileName = 'appLocalizationDelegates.json';
-  String jsonFilePath = '${arbDirectory.path}/$jsonFileName';
+  var arbDirectory = Directory('lib/localization/l10n/generated');
+  const jsonFileName = 'appLocalizationDelegates.json';
+  var jsonFilePath = '${arbDirectory.path}/$jsonFileName';
 
-  String originalString = File(jsonFilePath)?.readAsStringSync();
+  var originalString = File(jsonFilePath)?.readAsStringSync();
 
-  Map<String, dynamic> delegateJson = originalString.isEmpty
-      ? Map<String, dynamic>()
-      : jsonDecode(originalString);
+  var delegateJson =
+      originalString.isEmpty ? <String, dynamic>{} : jsonDecode(originalString);
 
-  String listString = '';
+  var listString = '';
 
   delegateJson.forEach((key, value) {
     print(key);
-    String delegateName = key.contains('.delegate') ? key : '$key()';
+    var delegateName = key.contains('.delegate') ? key : '$key()';
     listString += '\n\t\t$delegateName,';
   });
 
@@ -56,17 +55,16 @@ String _getDelegateNames() {
 }
 
 String _getImportFilePaths() {
-  Directory arbDirectory = Directory('lib/localization/l10n/generated');
-  String jsonFileName = 'appLocalizationDelegates.json';
-  String jsonFilePath = '${arbDirectory.path}/$jsonFileName';
+  var arbDirectory = Directory('lib/localization/l10n/generated');
+  const jsonFileName = 'appLocalizationDelegates.json';
+  var jsonFilePath = '${arbDirectory.path}/$jsonFileName';
 
-  String originalString = File(jsonFilePath)?.readAsStringSync();
+  var originalString = File(jsonFilePath)?.readAsStringSync();
 
-  Map<String, dynamic> delegateJson = originalString.isEmpty
-      ? Map<String, dynamic>()
-      : jsonDecode(originalString);
+  var delegateJson =
+      originalString.isEmpty ? <String, dynamic>{} : jsonDecode(originalString);
 
-  String listString = '';
+  var listString = '';
 
   delegateJson.forEach((key, value) {
     if (!key.contains('.delegate')) {

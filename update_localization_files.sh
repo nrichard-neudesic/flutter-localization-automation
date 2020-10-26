@@ -6,7 +6,7 @@ flutter pub pub run intl_translation:extract_to_arb --output-dir=lib/localizatio
 
 # add new strings to arb files (and remove old ones)
 BASEDIR=$(dirname "$0")
-dart $BASEDIR/scripts/steps_for_diff.dart
+dart "$BASEDIR"/scripts/steps_for_diff.dart
 
 # generate classes from arb files
 flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/localization/l10n/generated \

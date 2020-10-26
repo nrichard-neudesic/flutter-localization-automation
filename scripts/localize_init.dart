@@ -8,7 +8,7 @@ import 'create_static_locales.dart';
 import 'create_supported_locales.dart';
 
 void main() async {
-  String mainLocalizationFilePath = './lib/localization';
+  const mainLocalizationFilePath = './lib/localization';
 
   print('Starting localization initilization process');
   await createFileStructure(mainLocalizationFilePath);

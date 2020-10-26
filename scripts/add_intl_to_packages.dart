@@ -1,19 +1,19 @@
 import 'dart:io';
 
-addIntlToPackages() async {
+void addIntlToPackages() async {
   try {
-    var theFile = new File('pubspec.yaml');
+    var theFile = File('pubspec.yaml');
 
     var contents = theFile.readAsStringSync();
     stdout.writeln('Checking to see if intl package is in pubspec.yaml...');
     if (!contents.contains('intl:')) {
       stdout.writeln('No intl package found, adding as a dependency.');
 
-      var dependenciesRegex = new RegExp('dependencies:');
+      var dependenciesRegex = RegExp('dependencies:');
       var dependenciesIndices = dependenciesRegex.firstMatch(contents);
 
       if (dependenciesIndices != null) {
-        bool hasWhiteSpaceAfter = contents
+        var hasWhiteSpaceAfter = contents
                 .substring(
                     dependenciesIndices.end + 1, dependenciesIndices.end + 2)
                 .contains('\n') ||
@@ -22,8 +22,8 @@ addIntlToPackages() async {
                     dependenciesIndices.end + 1, dependenciesIndices.end + 2)
                 .contains('\s');
 
-        String packageName = 'intl: ^0.16.1';
-        String intlInsert =
+        var packageName = 'intl: ^0.16.1';
+        var intlInsert =
             hasWhiteSpaceAfter ? '\n  $packageName\n' : '  $packageName\n';
 
         contents = contents.substring(0, dependenciesIndices.end + 1) +

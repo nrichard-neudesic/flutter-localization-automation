@@ -2,7 +2,7 @@
 BASEDIR=$(dirname "$0")
 
 # Run Localization Initialization
-dart $BASEDIR/scripts/localize_init.dart
+dart "$BASEDIR"/scripts/localize_init.dart
 
 # Get Flutter packages.
 flutter pub get

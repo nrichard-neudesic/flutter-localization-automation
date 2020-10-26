@@ -7,21 +7,20 @@ bool shouldRemoveUnusedKeys = true;
 
 void main() {
   try {
-    Directory arbDirectory = Directory('lib/localization/l10n/arb');
+    var arbDirectory = Directory('lib/localization/l10n/arb');
 
     _createARBFiles(arbDirectory);
 
-    Map<String, dynamic> baseInternationalMessages =
-        _getBaseLocalizationJson(arbDirectory);
+    var baseInternationalMessages = _getBaseLocalizationJson(arbDirectory);
 
     var entities = arbDirectory.listSync(recursive: true);
 
-    entities.forEach((entity) {
+    for (var entity in entities) {
       if (entity is File &&
           entity.path.contains('arb') &&
           !entity.path.contains('messages')) {
-        String originalString = File(entity.path)?.readAsStringSync();
-        Map<String, dynamic> entityJson = _convertToJson(originalString);
+        var originalString = File(entity.path)?.readAsStringSync();
+        var entityJson = _convertToJson(originalString);
 
         entityJson = _addStringResources(
           baseInternationalMessages,
@@ -43,27 +42,29 @@ void main() {
           );
         }
 
-        String jsonString = JsonEncoder.withIndent('  ').convert(entityJson);
+        var jsonString = JsonEncoder.withIndent('  ').convert(entityJson);
         entity.writeAsStringSync(jsonString);
       }
-    });
+    }
+    ;
   } catch (error) {
     print(error);
   }
 }
 
 void _createARBFiles(Directory arbDirectory) {
-  StaticLocales.localeList.forEach((locale) {
-    String fileName = "intl_${locale.elementAt(0)}.arb";
+  for (var locale in StaticLocales.localeList) {
+    final fileName = "intl_${locale.elementAt(0)}.arb";
 
     if (!File("${arbDirectory.path}/$fileName").existsSync()) {
       File("${arbDirectory.path}/$fileName").createSync();
     }
-  });
+  }
+  ;
 }
 
 Map<String, dynamic> _getBaseLocalizationJson(Directory arbDirectory) {
-  String baseLocalizationFileAsString =
+  final baseLocalizationFileAsString =
       File('${arbDirectory.path}/intl_messages.arb').readAsStringSync();
 
   return jsonDecode(baseLocalizationFileAsString);
@@ -85,7 +86,7 @@ Map<String, dynamic> _addStringResources(
 
 Map<String, dynamic> _convertToJson(String originalString) {
   return originalString.isEmpty
-      ? Map<String, dynamic>()
+      ? <String, dynamic>{}
       : jsonDecode(originalString);
 }
 
@@ -95,8 +96,8 @@ Map<String, dynamic> _askToRemoveIndividualKey(
     File entity,
     Directory arbDirectory) {
   // cannot remove concurrently in for loop, so a stored list is used to remove keys after for loop interations.
-  List<String> keysToRemove = [];
-  List<String> keysToKeep = [];
+  var keysToRemove = <String>[];
+  var keysToKeep = <String>[];
   entityJson.forEach((key, value) {
     if (!baseInternationalMessages.containsKey(key) &&
         !keysToRemove.contains(key) &&

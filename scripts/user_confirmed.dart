@@ -2,7 +2,7 @@ import 'dart:io';
 
 bool userConfirmed() {
   print('Answer Y or N:');
-  String userAnswer = stdin.readLineSync().toUpperCase();
+  var userAnswer = stdin.readLineSync().toUpperCase();
 
   while (true) {
     switch (userAnswer) {
