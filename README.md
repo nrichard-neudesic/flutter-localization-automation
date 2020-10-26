@@ -23,11 +23,11 @@ The localize_init.sh generated a 'static_locales.dart' class. This is where the 
 
 ## Necessary step for iOS only
 
-You need to add localization selections to iOS project specifically. Open up the workspace, open the "Runner" project file and select the "Runner" Project. Add the supported localizations to the "Localization" section. (See iosLocalizationSetup.png in this directory for visual example). (No further action is needed in Android)
+You need to add localization selections to iOS project specifically. Open up the workspace, open the "Runner" project file and select the "Runner" Project. Add the supported localizations to the "Localization" section. (See iosLocalizationSetup.png in the /help directory for visual example). (No further action is needed in Android)
 
 ## Now what? Adding string resources to the project
 
-Add them to the \${FILE_NAME}Localization file that was generated from initial setup or create_localization_file.sh (bat).
+Add them to the \${FILE_NAME}Localization file that was generated from initial setup or create_localization_file.sh.
 
 ### Necessary Step - import messages_all.dart to all localization classes
 
