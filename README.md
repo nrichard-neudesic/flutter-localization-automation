@@ -65,7 +65,7 @@ To add a translation, each of the language specific .arb files needs to be updat
 In the example above, the text for the string resource is "Hello World!"
 
 There is great software for managing .arb files. It can be found here.
-https://www.codeandweb.com/babeledit
+<https://www.codeandweb.com/babeledit/>
 
 This software gives you a clear UI of all the string resources and the ability to import/export excel documents to give to translators.
 
